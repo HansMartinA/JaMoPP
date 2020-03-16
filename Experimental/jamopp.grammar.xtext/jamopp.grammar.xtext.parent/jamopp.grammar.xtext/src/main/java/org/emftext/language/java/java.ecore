@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmi:id="_WosmsNz1Ed2bJ_pQViWxFg" name="java" nsURI="http://www.emftext.org/java"
+    nsPrefix="java">
+  <eSubpackages name="classifiers" nsURI="http://www.emftext.org/java/classifiers"
+      nsPrefix="classifiers">
+    <eClassifiers xsi:type="ecore:EClass" name="Classifier" abstract="true" eSuperTypes="#_Wo2ZO9z1Ed2bJ_pQViWxFg #//references/ReferenceableElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ConcreteClassifier" abstract="true"
+        eSuperTypes="#//classifiers/Classifier"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Implementor" abstract="true" eSuperTypes="#//commons/Commentable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="implements" upperBound="-1"
+          eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//classifiers/ConcreteClassifier #//classifiers/Implementor">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="defaultExtends" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Interface" eSuperTypes="#//classifiers/ConcreteClassifier">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
+          eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="defaultExtends" upperBound="-1"
+          eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg" containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="commons" nsURI="http://www.emftext.org/java/commons" nsPrefix="commons">
+    <eClassifiers xsi:type="ecore:EClass" name="Commentable" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="layoutInformations" upperBound="-1"
+          eType="ecore:EClass platform:/plugin/org.emftext.commons.layout/metamodel/layout.ecore#//LayoutInformation"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="#//commons/Commentable">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NamespaceAwareElement" abstract="true"
+        eSuperTypes="#//commons/Commentable">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespaces" unique="false"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="containers" nsURI="http://www.emftext.org/java/containers" nsPrefix="containers">
+    <eClassifiers xsi:type="ecore:EClass" name="JavaRoot" abstract="true" eSuperTypes="#//commons/NamespaceAwareElement #//commons/NamedElement #//imports/ImportingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CompilationUnit" eSuperTypes="#//containers/JavaRoot">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="classifiers" lowerBound="1"
+          upperBound="-1" eType="#//classifiers/ConcreteClassifier"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Module" abstract="true" eSuperTypes="#//containers/JavaRoot">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" upperBound="-1"
+          eType="#//modules/ModuleDirective" containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="imports" nsURI="http://www.emftext.org/java/imports" nsPrefix="imports">
+    <eClassifiers xsi:type="ecore:EClass" name="Import" abstract="true" eSuperTypes="#//commons/NamespaceAwareElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ImportingElement" abstract="true"
+        eSuperTypes="#//commons/Commentable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+          eType="#//imports/Import" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StaticImport" abstract="true" eSuperTypes="#//imports/Import">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="static" lowerBound="1"
+          eType="#_Wo2Yv9z1Ed2bJ_pQViWxFg" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ClassifierImport" eSuperTypes="#//imports/Import">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="classifier" lowerBound="1"
+          eType="#//classifiers/ConcreteClassifier"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PackageImport" eSuperTypes="#//imports/Import"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StaticClassifierImport" eSuperTypes="#//imports/StaticImport"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StaticMemberImport" eSuperTypes="#//imports/StaticImport">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="staticMembers" lowerBound="1"
+          upperBound="-1" eType="#//references/ReferenceableElement"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages xmi:id="_Wo2Ystz1Ed2bJ_pQViWxFg" name="modifiers" nsURI="http://www.emftext.org/java/modifiers"
+      nsPrefix="modifiers">
+    <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2Ys9z1Ed2bJ_pQViWxFg" name="Modifier"
+        abstract="true" eSuperTypes="#//commons/Commentable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Modifiable" abstract="true" eSuperTypes="#//commons/Commentable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="modifiers" upperBound="-1"
+          eType="#_Wo2Ys9z1Ed2bJ_pQViWxFg" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2Yv9z1Ed2bJ_pQViWxFg" name="Static"
+        eSuperTypes="#_Wo2Ys9z1Ed2bJ_pQViWxFg"/>
+  </eSubpackages>
+  <eSubpackages name="references" nsURI="http://www.emftext.org/java/references" nsPrefix="references">
+    <eClassifiers xsi:type="ecore:EClass" name="Reference" abstract="true" eSuperTypes="#//commons/Commentable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//references/Reference"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ReferenceableElement" abstract="true"
+        eSuperTypes="#//commons/NamedElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ElementReference" abstract="true"
+        eSuperTypes="#//references/Reference">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//references/ReferenceableElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IdentifierReference" eSuperTypes="#//references/ElementReference"/>
+  </eSubpackages>
+  <eSubpackages xmi:id="_Wo2ZOtz1Ed2bJ_pQViWxFg" name="types" nsURI="http://www.emftext.org/java/types"
+      nsPrefix="types">
+    <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2ZO9z1Ed2bJ_pQViWxFg" name="Type"
+        abstract="true" eSuperTypes="#//commons/Commentable"/>
+    <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2ZP9z1Ed2bJ_pQViWxFg" name="TypedElement"
+        abstract="true" eSuperTypes="#//commons/Commentable">
+      <eStructuralFeatures xsi:type="ecore:EReference" xmi:id="_Wo2ZQdz1Ed2bJ_pQViWxFg"
+          name="typeReference" lowerBound="1" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2ZPdz1Ed2bJ_pQViWxFg" name="TypeReference"
+        abstract="true" eSuperTypes="#//commons/Commentable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ClassifierReference" eSuperTypes="#_Wo2ZPdz1Ed2bJ_pQViWxFg">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//classifiers/Classifier"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" xmi:id="_Wo2ZQ9z1Ed2bJ_pQViWxFg" name="NamespaceClassifierReference"
+        eSuperTypes="#_Wo2ZPdz1Ed2bJ_pQViWxFg #//commons/NamespaceAwareElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" xmi:id="_Wo2ZRdz1Ed2bJ_pQViWxFg"
+          name="classifierReferences" lowerBound="1" upperBound="-1" eType="#//types/ClassifierReference"
+          containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="modules" nsURI="http://www.emftext.org/java/modules" nsPrefix="modules">
+    <eClassifiers xsi:type="ecore:EClass" name="OpenModule" eSuperTypes="#//containers/Module"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NormalModule" eSuperTypes="#//containers/Module"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ModuleDirective" abstract="true" eSuperTypes="#//commons/Commentable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UsesModuleDirective" eSuperTypes="#//modules/ModuleDirective #_Wo2ZP9z1Ed2bJ_pQViWxFg"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ProvidesModuleDirective" eSuperTypes="#_Wo2ZP9z1Ed2bJ_pQViWxFg #//modules/ModuleDirective">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="serviceProviders" lowerBound="1"
+          upperBound="-1" eType="#_Wo2ZPdz1Ed2bJ_pQViWxFg" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AccessProvidingModuleDirective" abstract="true"
+        eSuperTypes="#//modules/ModuleDirective">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="accessGrantedPackage"
+          lowerBound="1" eType="#//references/IdentifierReference" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
+          eType="#//modules/ModuleReference" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RequiresModuleDirective" eSuperTypes="#//modules/ModuleDirective #//modifiers/Modifiable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredModule" lowerBound="1"
+          eType="#//modules/ModuleReference" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OpensModuleDirective" eSuperTypes="#//modules/AccessProvidingModuleDirective"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ExportsModuleDirective" eSuperTypes="#//modules/AccessProvidingModuleDirective"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ModuleReference" eSuperTypes="#//commons/NamespaceAwareElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//containers/Module"
+          containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

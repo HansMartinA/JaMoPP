@@ -30,7 +30,7 @@ Workflow {
 		language = StandardLanguage {
 			name = "org.emftext.language.java.Java"
 			fileExtensions = "java"
-			referencedResource = "platform:/resource/org.emftext.language.java/metamodel/java.genmodel"
+			referencedResource = "platform:/resource/jamopp.grammar.xtext/src/main/java/org/emftext/language/java/java.genmodel"
 			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
 

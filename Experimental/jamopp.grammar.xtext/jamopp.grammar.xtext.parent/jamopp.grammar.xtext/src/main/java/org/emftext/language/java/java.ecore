@@ -25,11 +25,7 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="commons" nsURI="http://www.emftext.org/java/commons" nsPrefix="commons">
-    <eClassifiers xsi:type="ecore:EClass" name="Commentable" abstract="true">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="layoutInformations" upperBound="-1"
-          eType="ecore:EClass platform:/plugin/org.emftext.commons.layout/metamodel/layout.ecore#//LayoutInformation"
-          containment="true"/>
-    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Commentable" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="#//commons/Commentable">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -44,7 +40,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="JavaRoot" abstract="true" eSuperTypes="#//commons/NamespaceAwareElement #//commons/NamedElement #//imports/ImportingElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="CompilationUnit" eSuperTypes="#//containers/JavaRoot">
       <eStructuralFeatures xsi:type="ecore:EReference" name="classifiers" lowerBound="1"
-          upperBound="-1" eType="#//classifiers/ConcreteClassifier"/>
+          upperBound="-1" eType="#//classifiers/ConcreteClassifier" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Module" abstract="true" eSuperTypes="#//containers/JavaRoot">
       <eStructuralFeatures xsi:type="ecore:EReference" name="target" upperBound="-1"
